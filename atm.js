@@ -8,6 +8,17 @@ const wallet = require('./wallet');
 //Function to Get Balance:
 function getBalance(){
     console.log(`Account Balance: $${account.balance}, Wallet Balance: $${wallet.balance}`);
+    
+    //Prompt the User to see if they want to view Transaction History:
+    let userInput = prompt("Would you like to view Transaction History? Yes or No: ").toLowerCase();
+
+    //Display Transaction History:
+    if(userInput == "yes"){
+        for(let i = 0; i < account.transHistory.length; i++){
+            console.log(`Account Balance: $${account.transHistory[i].bankBalance}, Wallet Balance:  $${account.transHistory[i].walletBalance}`);
+            console.log(`$ Amount Change: $${account.transHistory[i].amountChange}, Transaction Number:  #${account.transHistory[i].transNum}`);
+        }
+    }
 }
 
 //Function to Withdraw from Account:
@@ -18,6 +29,7 @@ function withdraw(){
         wallet.balance += amount;
         console.log(`$${amount} was Withdrawn Bank Account and Deposited in your Wallet!`);
         console.log(`Account Balance: $${account.balance}, Wallet Balance: $${wallet.balance}`);
+        account.transHistory.push(transTemplate(amount));
     }else{
         console.log(`Amount entered is greater than available balance! Account Balance: $${account.balance}`);
         withdraw();
@@ -33,6 +45,7 @@ function deposit(){
         wallet.balance -= amount;
         console.log(`$${amount} was Withdrawn Wallet and Deposited in your Bank Account!`);
         console.log(`Account Balance: $${account.balance}, Wallet Balance: $${wallet.balance}`);
+        account.transHistory.push(transTemplate(amount));
     }else{
         console.log(`Amount entered is greater than available balance! Wallet Balance: $${wallet.balance}`);
         deposit();
@@ -60,6 +73,17 @@ function validatePin(lock = 1){
         console.log(`After three attempts your account will lock! Attempt: ${lock}`);
         validatePin(lock += 1);
     }
+}
+
+//Template for Transaction History Object
+function transTemplate(amount){
+    let transaction = {
+        bankBalance: account.balance,
+        walletBalance: wallet.balance,
+        amountChange: amount,
+        transNum: account.transNum++
+    }
+    return transaction;
 }
 
 //EXPORTS:
