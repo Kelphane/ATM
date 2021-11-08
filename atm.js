@@ -69,7 +69,7 @@ function validatePin(lock = 1){
         console.log("Welcome, Valued Customer!");
         return true;
     }else{
-        console.log("Invalid PIN!");
+        console.log("Invalid PIN!\n");
         console.log(`After three attempts your account will lock! Attempt: ${lock}`);
         validatePin(lock += 1);
     }
