@@ -66,8 +66,7 @@ function validatePin(lock = 1){
     }else if(lock <= 3 && userPin !== account.pin){
             console.log("Invalid PIN!");
             console.log(`After three attempts your account will lock! Attempt: ${lock}`);
-            validatePin(lock += 1);
-    }else{
+    }else if(lock == 4){
         console.log("This Account is Locked!");
         return false;
     }

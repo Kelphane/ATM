@@ -11,6 +11,7 @@ if(atm.validatePin()){
     mainMenu();
 }else{
     console.log("Please Contact your Bank!");
+    atm.validatePin();
 }
 
 //Main Menu Function:
