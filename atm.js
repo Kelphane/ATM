@@ -26,15 +26,22 @@ function deposit(amount){
 }
 
 //Function to Prompt and Validate User for Account Pin:
-function validatePin(){
-    //Prompt User for PIN and Convert Input into Int:
-    userPin = parseInt(prompt("Please enter your PIN: "));
+function validatePin(lock = 0){
+    if(lock <= 3){
+        //Prompt User for PIN and Convert Input into Int:
+        userPin = parseInt(prompt("Please enter your PIN: "));
+    }else{
+        console.log("This Account is Locked!");
+        return false;
+    }
 
     if(userPin === account.pin){
+        console.log("Welcome, Valued Customer!");
         return true;
     }else{
         console.log("Invalid PIN!");
-        validatePin();
+        console.log("After three attempts your account will lock!");
+        validatePin(lock += 1);
     }
 }
 
