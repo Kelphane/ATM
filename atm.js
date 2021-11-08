@@ -7,17 +7,19 @@ const wallet = require('./wallet');
 
 //Function to Get Balance:
 function getBalance(){
-    console.log(`Account Balance: $${account.balance}, Wallet Balance: $${wallet.balance}`);
+    console.log(`Account Balance: $${account.balance}, Wallet Balance: $${wallet.balance}\n`);
     
     //Prompt the User to see if they want to view Transaction History:
     let userInput = prompt("Would you like to view Transaction History? Yes or No: ").toLowerCase();
 
     //Display Transaction History:
     if(userInput == "yes"){
+        console.log("//TRANSACTION HISTORY//");
         for(let i = 0; i < account.transHistory.length; i++){
             console.log(`Account Balance: $${account.transHistory[i].bankBalance}, Wallet Balance:  $${account.transHistory[i].walletBalance}`);
-            console.log(`$ Amount Change: $${account.transHistory[i].amountChange}, Transaction Number:  #${account.transHistory[i].transNum}`);
+            console.log(`$ Amount Change: $${account.transHistory[i].amountChange}, Transaction Number:  #${account.transHistory[i].transNum}\n`);
         }
+        console.log("//TRANSACTION HISTORY END//");
     }
 }
 
@@ -27,11 +29,11 @@ function withdraw(){
     if(amount <= account.balance){
         account.balance -= amount;
         wallet.balance += amount;
-        console.log(`$${amount} was Withdrawn Bank Account and Deposited in your Wallet!`);
-        console.log(`Account Balance: $${account.balance}, Wallet Balance: $${wallet.balance}`);
+        console.log(`$${amount} was Withdrawn from Bank Account and Deposited in your Wallet!`);
+        console.log(`Account Balance: $${account.balance}, Wallet Balance: $${wallet.balance}\n`);
         account.transHistory.push(transTemplate(amount));
     }else{
-        console.log(`Amount entered is greater than available balance! Account Balance: $${account.balance}`);
+        console.log(`Amount entered is greater than available balance! Account Balance: $${account.balance}\n`);
         withdraw();
     }
     
@@ -43,11 +45,11 @@ function deposit(){
     if(amount <= wallet.balance){
         account.balance += amount;
         wallet.balance -= amount;
-        console.log(`$${amount} was Withdrawn Wallet and Deposited in your Bank Account!`);
-        console.log(`Account Balance: $${account.balance}, Wallet Balance: $${wallet.balance}`);
+        console.log(`$${amount} was Withdrawn from Wallet and Deposited in your Bank Account!`);
+        console.log(`Account Balance: $${account.balance}, Wallet Balance: $${wallet.balance}\n`);
         account.transHistory.push(transTemplate(amount));
     }else{
-        console.log(`Amount entered is greater than available balance! Wallet Balance: $${wallet.balance}`);
+        console.log(`Amount entered is greater than available balance! Wallet Balance: $${wallet.balance}\n`);
         deposit();
     }
    
@@ -66,11 +68,11 @@ function validatePin(lock = 1){
     }
 
     if(userPin === account.pin){
-        console.log("Welcome, Valued Customer!");
+        console.log("Welcome, Valued Customer!\n");
         return true;
     }else{
-        console.log("Invalid PIN!\n");
-        console.log(`After three attempts your account will lock! Attempt: ${lock}`);
+        console.log("Invalid PIN!");
+        console.log(`After three attempts your account will lock! Attempt: ${lock}\n`);
         validatePin(lock += 1);
     }
 }
