@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Kelphane/ATM/issues"
   },
-  "homepage": "https://github.com/Kelphane/ATM#readme"
+  "homepage": "https://github.com/Kelphane/ATM#readme",
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  }
 }
