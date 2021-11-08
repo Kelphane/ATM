@@ -19,7 +19,7 @@ function getBalance(){
             console.log(`Account Balance: $${account.transHistory[i].bankBalance}, Wallet Balance:  $${account.transHistory[i].walletBalance}`);
             console.log(`$ Amount Change: $${account.transHistory[i].amountChange}, Transaction Number:  #${account.transHistory[i].transNum}\n`);
         }
-        console.log("//TRANSACTION HISTORY END//");
+        console.log("//TRANSACTION HISTORY END//\n");
     }
 }
 
@@ -57,23 +57,19 @@ function deposit(){
 
 //Function to Prompt and Validate User for Account Pin:
 function validatePin(lock = 1){
-    let userPin = 0;
+    //Prompt User for PIN and Convert Input into Int:
+    let userPin = parseInt(prompt("Please enter your PIN: "));
 
-    if(lock < 4){
-        //Prompt User for PIN and Convert Input into Int:
-        userPin = parseInt(prompt("Please enter your PIN: "));
+    if(lock <= 3 && userPin === account.pin){
+        console.log("Welcome, Valued Customer!");
+        return true;
+    }else if(lock <= 3 && userPin !== account.pin){
+            console.log("Invalid PIN!");
+            console.log(`After three attempts your account will lock! Attempt: ${lock}`);
+            validatePin(lock += 1);
     }else{
         console.log("This Account is Locked!");
         return false;
-    }
-
-    if(userPin === account.pin){
-        console.log("Welcome, Valued Customer!\n");
-        return true;
-    }else{
-        console.log("Invalid PIN!");
-        console.log(`After three attempts your account will lock! Attempt: ${lock}\n`);
-        validatePin(lock += 1);
     }
 }
 
