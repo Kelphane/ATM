@@ -1,6 +1,7 @@
 "use strict";
 
 //IMPORTS:
+const prompt = require("prompt-sync")();
 const account = require('./account');
 const wallet = require('./wallet');
 
@@ -26,7 +27,15 @@ function deposit(amount){
 
 //Function to Prompt and Validate User for Account Pin:
 function validatePin(){
-   
+    //Prompt User for PIN and Convert Input into Int:
+    userPin = parseInt(prompt("Please enter your PIN: "));
+
+    if(userPin === account.pin){
+        return true;
+    }else{
+        console.log("Invalid PIN!");
+        validatePin();
+    }
 }
 
 //EXPORTS:
