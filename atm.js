@@ -1,5 +1,6 @@
 "use strict";
 
+//IMPORTS:
 const account = require('./account');
 const wallet = require('./wallet');
 
@@ -12,13 +13,15 @@ function getBalance(){
 //Function to Withdraw from Account:
 function withdraw(amount){
     account.balance -= amount;
-    return account.balance;
+    wallet.balance += amount;
+    console.log(`Account Balance: ${account.balance}, Wallet Balance:${wallet.balance}`);
 }
 
 //Function to Deposit into Account:
 function deposit(amount){
     account.balance += amount;
-    return account.balance;
+    wallet.balance -= amount;
+    console.log(`Account Balance: ${account.balance}, Wallet Balance:${wallet.balance}`);
 }
 
 //Function to Prompt and Validate User for Account Pin:
@@ -26,6 +29,7 @@ function validatePin(){
    
 }
 
+//EXPORTS:
 module.exports.getBalance = getBalance;
 module.exports.withdraw = withdraw;
 module.exports.deposit = deposit;
