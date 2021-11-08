@@ -5,7 +5,7 @@ const prompt = require("prompt-sync")();
 const atm = require("./atm");
 
 //Menu Related Code:
-if(atm.validatePin() == true){
+if(atm.validatePin()){
     mainMenu();
 }else{
     console.log("Please Contact your Bank!");
@@ -21,8 +21,7 @@ function mainMenu(){
             mainMenu();
             break;
         case 2:
-            let amount = parseInt(prompt("Please enter in amount you want to withdraw: "));
-            atm.withdraw(amount);
+            atm.withdraw();
             mainMenu();
             break;
         case 3:

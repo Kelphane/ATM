@@ -12,17 +12,31 @@ function getBalance(){
 }
 
 //Function to Withdraw from Account:
-function withdraw(amount){
-    account.balance -= amount;
-    wallet.balance += amount;
-    console.log(`Account Balance: ${account.balance}, Wallet Balance:${wallet.balance}`);
+function withdraw(){
+    let amount = parseInt(prompt("Please enter in amount you want to withdraw: "));
+    if(amount <= account.balance){
+        account.balance -= amount;
+        wallet.balance += amount;
+        console.log(`Account Balance: ${account.balance}, Wallet Balance:${wallet.balance}`);
+    }else{
+        console.log(`Amount entered is greater than available balance! Account Balance: ${account.balance}`);
+        withdraw();
+    }
+    
 }
 
 //Function to Deposit into Account:
-function deposit(amount){
-    account.balance += amount;
-    wallet.balance -= amount;
-    console.log(`Account Balance: ${account.balance}, Wallet Balance:${wallet.balance}`);
+function deposit(){
+    let amount = parseInt(prompt("Please enter in amount you want to deposit: "));
+    if(amount <= wallet.balance){
+        account.balance += amount;
+        wallet.balance -= amount;
+        console.log(`Account Balance: ${account.balance}, Wallet Balance:${wallet.balance}`);
+    }else{
+        console.log(`Amount entered is greater than available balance! Wallet Balance: ${wallet.balance}`);
+        deposit();
+    }
+   
 }
 
 //Function to Prompt and Validate User for Account Pin:
