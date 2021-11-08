@@ -1,21 +1,24 @@
 "use strict";
 
 const account = require('./account');
+const wallet = require('./wallet');
 
 //Function to Get Balance:
 function getBalance(){
-    account.balance += 10;
     console.log(account.balance);
+    return account.balance;
 }
 
 //Function to Withdraw from Account:
-function withdraw(){
-    
+function withdraw(amount){
+    account.balance -= amount;
+    return account.balance;
 }
 
 //Function to Deposit into Account:
-function deposit(){
-    
+function deposit(amount){
+    account.balance += amount;
+    return account.balance;
 }
 
 //Function to Prompt and Validate User for Account Pin:
