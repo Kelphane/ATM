@@ -13,7 +13,7 @@ if(atm.validatePin()){
 
 
 function mainMenu(){
-    menuOption = prompt("Please enter 1: 'Account Balance', 2: 'Withdraw', 3: 'Deposit', 4: 'Exit'");
+    let menuOption = parseInt(prompt("Please enter 1: 'Account Balance', 2: 'Withdraw', 3: 'Deposit', 4: 'Exit'"));
 
     switch(menuOption){
         case 1:
@@ -29,7 +29,8 @@ function mainMenu(){
             mainMenu();
             break;
         case 4:
-        
+            //Exit:
+            return;
         default:
             console.log("Sorry, I didn't recognize that command!");
             mainMenu();

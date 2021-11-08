@@ -7,8 +7,7 @@ const wallet = require('./wallet');
 
 //Function to Get Balance:
 function getBalance(){
-    console.log(account.balance);
-    return account.balance;
+    console.log(`Account Balance: $${account.balance}, Wallet Balance: $${wallet.balance}`);
 }
 
 //Function to Withdraw from Account:
@@ -17,9 +16,10 @@ function withdraw(){
     if(amount <= account.balance){
         account.balance -= amount;
         wallet.balance += amount;
-        console.log(`Account Balance: ${account.balance}, Wallet Balance:${wallet.balance}`);
+        console.log(`$${amount} was Withdrawn Bank Account and Deposited in your Wallet!`);
+        console.log(`Account Balance: $${account.balance}, Wallet Balance: $${wallet.balance}`);
     }else{
-        console.log(`Amount entered is greater than available balance! Account Balance: ${account.balance}`);
+        console.log(`Amount entered is greater than available balance! Account Balance: $${account.balance}`);
         withdraw();
     }
     
@@ -31,9 +31,10 @@ function deposit(){
     if(amount <= wallet.balance){
         account.balance += amount;
         wallet.balance -= amount;
-        console.log(`Account Balance: ${account.balance}, Wallet Balance:${wallet.balance}`);
+        console.log(`$${amount} was Withdrawn Bank Account and Deposited in your Wallet!`);
+        console.log(`Account Balance: $${account.balance}, Wallet Balance: $${wallet.balance}`);
     }else{
-        console.log(`Amount entered is greater than available balance! Wallet Balance: ${wallet.balance}`);
+        console.log(`Amount entered is greater than available balance! Wallet Balance: $${wallet.balance}`);
         deposit();
     }
    
