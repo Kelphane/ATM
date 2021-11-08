@@ -26,7 +26,9 @@ function deposit(amount){
 }
 
 //Function to Prompt and Validate User for Account Pin:
-function validatePin(lock = 0){
+function validatePin(lock = 1){
+    let userPin = 0;
+
     if(lock <= 3){
         //Prompt User for PIN and Convert Input into Int:
         userPin = parseInt(prompt("Please enter your PIN: "));
@@ -40,7 +42,7 @@ function validatePin(lock = 0){
         return true;
     }else{
         console.log("Invalid PIN!");
-        console.log("After three attempts your account will lock!");
+        console.log(`After three attempts your account will lock! Attempt: ${lock}`);
         validatePin(lock += 1);
     }
 }
