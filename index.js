@@ -30,6 +30,7 @@ function mainMenu(){
             break;
         case 4:
             //Exit:
+            console.log("Thank you for visiting!");
             return;
         default:
             console.log("Sorry, I didn't recognize that command!");

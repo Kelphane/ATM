@@ -31,7 +31,7 @@ function deposit(){
     if(amount <= wallet.balance){
         account.balance += amount;
         wallet.balance -= amount;
-        console.log(`$${amount} was Withdrawn Bank Account and Deposited in your Wallet!`);
+        console.log(`$${amount} was Withdrawn Wallet and Deposited in your Bank Account!`);
         console.log(`Account Balance: $${account.balance}, Wallet Balance: $${wallet.balance}`);
     }else{
         console.log(`Amount entered is greater than available balance! Wallet Balance: $${wallet.balance}`);
@@ -44,7 +44,7 @@ function deposit(){
 function validatePin(lock = 1){
     let userPin = 0;
 
-    if(lock <= 3){
+    if(lock < 4){
         //Prompt User for PIN and Convert Input into Int:
         userPin = parseInt(prompt("Please enter your PIN: "));
     }else{
