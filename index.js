@@ -6,17 +6,34 @@ const atm = require("./atm");
 
 //Menu Related Code:
 if(atm.validatePin() == true){
-    switch(menuOption){
-        case "1":
-            break;
-        case "2":
-            break;
-        case "3":
-            break;
-        case "4":
-            break;
-    }
+    mainMenu();
 }else{
     console.log("Please Contact your Bank!");
 }
 
+
+function mainMenu(){
+    menuOption = prompt("Please enter 1: 'Account Balance', 2: 'Withdraw', 3: 'Deposit', 4: 'Exit'");
+
+    switch(menuOption){
+        case 1:
+            atm.getBalance();
+            mainMenu();
+            break;
+        case 2:
+            let amount = parseInt(prompt("Please enter in amount you want to withdraw: "));
+            atm.withdraw(amount);
+            mainMenu();
+            break;
+        case 3:
+            atm.deposit();
+            mainMenu();
+            break;
+        case 4:
+        
+        default:
+            console.log("Sorry, I didn't recognize that command!");
+            mainMenu();
+            break;
+    }
+}
